@@ -1,24 +1,32 @@
-import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, Link } from 'react-router-dom';
+
+import { UserProvider } from './context/UserProvider';
+import { HomePage } from './HomePage';
 import { AboutPage } from './AboutPage';
 import { LoginPage } from './LoginPage';
-import { HomePage } from './HomePage';
 import { NavBar } from './NavBar';
-import { UserProvider } from './context/UserProvider';
+
 
 export const MainApp = () => {
-    return (
-        <UserProvider>
-            <h1>MainApp</h1>
-            <NavBar />
-            <hr />
-            <Routes>
-                <Route path='/' element={<HomePage />} />
-                <Route path='login' element={<LoginPage />} />
-                <Route path='about' element={<AboutPage />} />
+  return (
+    <UserProvider>
+        {/* <h1>MainApp</h1> */}
+        {/* <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/login">Login</Link> */}
+        <NavBar />
+        <hr />
 
-                {/* <Route path='/*' element={<LoginPage />} /> */}
-                <Route path='/*' element={<Navigate to='/about' />} />
-            </Routes>
-        </UserProvider>
-    )
+
+        <Routes>
+          <Route path="/" element={ <HomePage /> } />
+          <Route path="about" element={ <AboutPage /> } />
+          <Route path="login" element={ <LoginPage /> } />
+
+          {/* <Route path="/*" element={ <LoginPage /> } /> */}
+          <Route path="/*" element={ <Navigate to="/about" /> } />
+
+        </Routes>
+    </UserProvider>
+  )
 }

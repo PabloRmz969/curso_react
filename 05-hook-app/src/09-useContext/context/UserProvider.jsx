@@ -1,4 +1,4 @@
-import { UserContext } from "./UseContext"
+import { UserContext } from "./UserContext"
 
 export const UserProvider = ({ children }) => {
     const user = {

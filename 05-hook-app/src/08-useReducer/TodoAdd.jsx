@@ -22,7 +22,7 @@ export const TodoAdd = ({ onNewTodo }) => {
 
     return (
         <>
-            <form onSubmit={onFormSubmit}>
+            <form onSubmit={onFormSubmit} aria-label="form">
                 <input
                     type="text"
                     placeholder="¿Qué hay que hacer?"
@@ -30,6 +30,7 @@ export const TodoAdd = ({ onNewTodo }) => {
                     value={description}
                     onChange={onInputChange}
                     className="form-control"
+                    aria-label="todoTxt"
                 />
 
                 <button
