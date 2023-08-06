@@ -5,26 +5,20 @@ import { addHours } from 'date-fns';
 
 
 
-import { CalendarEvent, CalendarModal, Navbar } from '../';
+import { CalendarEvent, CalendarModal, FabAddNew, FabDelete, Navbar } from '../';
 import { localizer, getMessagesES } from '../../heplers';
 import { useState } from 'react';
+import { useCalendarStore, useUiStore } from '../../hooks';
 
 
 
-const events = [{
-    title: 'Cumpleaños del jefe',
-    notes: 'Hay que comprar el regalo',
-    start: new Date(),
-    end: addHours(new Date(), 2),
-    bgColor: '#fafafa',
-    user: {
-        _id: '321',
-        name: 'Pablo'
-    }
-}];
 
 export const CalendarPage = () => {
+    
+    const {openDateModal} = useUiStore();
+    const {events, setActiveEvent} = useCalendarStore();
     const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week');
+
 
     const eventStyleGetter = (event, start, end, isSelected) => {
 
@@ -40,12 +34,12 @@ export const CalendarPage = () => {
         }
     }
 
-    const onDoubleClick = (event) =>{
-        console.log({doubleClick: event});
+    const onDoubleClick = () =>{
+        openDateModal();
     }
 
     const onSelect = (event) =>{
-        console.log({click: event});
+        setActiveEvent(event);
     }
 
     const onViewChanged = (event) =>{
@@ -77,6 +71,8 @@ export const CalendarPage = () => {
             />
 
             <CalendarModal/>
+            <FabAddNew />
+            <FabDelete />
         </>
     )
 }
