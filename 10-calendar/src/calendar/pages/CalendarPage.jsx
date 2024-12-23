@@ -5,7 +5,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 
 import { CalendarEvent, CalendarModal, FabAddNew, FabDelete, Navbar } from '../';
-import { localizer, getMessagesES } from '../../heplers';
+import { localizer, getMessagesES } from '../../helpers';
 import { useEffect, useState } from 'react';
 import { useAuthStore, useCalendarStore, useUiStore } from '../../hooks';
 

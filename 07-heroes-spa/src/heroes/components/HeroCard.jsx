@@ -16,7 +16,7 @@ export const HeroCard = ({
     publisher,
     alter_ego,
     first_appearance,
-    characters
+    characters, fn
 }) => {
     const heroImgUrl = `/assets/heroes/${id}.jpg`;
 

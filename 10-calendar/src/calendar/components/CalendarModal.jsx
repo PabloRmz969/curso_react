@@ -8,7 +8,8 @@ import Modal from 'react-modal';
 import DatePicker, { registerLocale } from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import {  useModal, useUiStore } from '../../hooks';
+import { useModal, useUiStore } from '../../hooks';
+import { getEnvVariables } from '../../helpers';
 
 registerLocale('es', es)
 
@@ -23,7 +24,8 @@ const customStyles = {
     },
 };
 
-Modal.setAppElement('#root');
+if (getEnvVariables().VITE_MODE !== 'test')
+    Modal.setAppElement('#root');
 
 const initialState = {
     title: 'Pablo',
@@ -51,7 +53,7 @@ export const CalendarModal = () => {
         onSubmit } = useModal(initialState);
 
 
-    
+
     return (
         <Modal
             isOpen={isDateModalOpen}

@@ -4,6 +4,7 @@ const { Provider } = require("react-redux");
 const { uiSlice } = require("../../src/store");
 const { configureStore } = require("@reduxjs/toolkit");
 
+
 const getMockStore = (initialState) => {
     return configureStore({
         reducer: {
@@ -17,10 +18,10 @@ const getMockStore = (initialState) => {
 
 describe('pruebas en useUiStore', () => {
     test('debe de regresar los valores por defecto', () => {
-        const mcokStore = getMockStore({ isDateModalOpen: false });
+        const mockStore = getMockStore({ isDateModalOpen: false });
 
         const { result } = renderHook(() => useUiStore(), {
-            wrapper: ({ children }) => <Provider store={mcokStore}>{children}</Provider>
+            wrapper: ({ children }) => <Provider store={mockStore}>{children}</Provider>
         });
 
         expect(result.current).toEqual({
@@ -33,10 +34,10 @@ describe('pruebas en useUiStore', () => {
     });
 
     test('openDateModal debe de colocar true en el isDateModalOpen', () => {
-        const mcokStore = getMockStore({ isDateModalOpen: false });
+        const mockStore = getMockStore({ isDateModalOpen: false });
 
         const { result } = renderHook(() => useUiStore(), {
-            wrapper: ({ children }) => <Provider store={mcokStore}>{children}</Provider>
+            wrapper: ({ children }) => <Provider store={mockStore}>{children}</Provider>
         });
 
         const {openDateModal} = result.current;
@@ -49,10 +50,10 @@ describe('pruebas en useUiStore', () => {
     });
 
     test('closeDateModal debe de colocar false en el isDateModalOpen', () => {
-        const mcokStore = getMockStore({ isDateModalOpen: true });
+        const mockStore = getMockStore({ isDateModalOpen: true });
 
         const { result } = renderHook(() => useUiStore(), {
-            wrapper: ({ children }) => <Provider store={mcokStore}>{children}</Provider>
+            wrapper: ({ children }) => <Provider store={mockStore}>{children}</Provider>
         });
 
         const {closeDateModal} = result.current;
@@ -65,10 +66,10 @@ describe('pruebas en useUiStore', () => {
     });
 
     test('toggleDateModal debe de colocar true/false en el isDateModalOpen dependiendo si esta abierto', () => {
-        const mcokStore = getMockStore({ isDateModalOpen: true });
+        const mockStore = getMockStore({ isDateModalOpen: true });
 
         const { result } = renderHook(() => useUiStore(), {
-            wrapper: ({ children }) => <Provider store={mcokStore}>{children}</Provider>
+            wrapper: ({ children }) => <Provider store={mockStore}>{children}</Provider>
         });
 
 
@@ -82,4 +83,6 @@ describe('pruebas en useUiStore', () => {
         });
         expect(result.current.isDateModalOpen).toBeTruthy();
     });
+
+    
 })
